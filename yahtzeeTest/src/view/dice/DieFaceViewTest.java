@@ -1,0 +1,44 @@
+package view.dice;
+
+import java.util.List;
+
+import narrTest.NarrTestCase;
+
+public class DieFaceViewTest extends NarrTestCase {
+
+	public void testDieShape() throws Exception {
+		DieFaceView oneDieView = new OneDieView();
+		checkDieShape(oneDieView);
+
+		TwoDieView twoDieView = new TwoDieView();
+		checkDieShape(twoDieView);
+
+	}
+
+	private void checkDieShape(DieFaceView oneDieView) {
+		List<String> rowsToDraw = assertIsOfTypeAndGet(List.class,
+				oneDieView.getRowsToDraw());
+		int expectedNumberOfRows = 5;
+		assertEquals(expectedNumberOfRows, rowsToDraw.size());
+
+		String expectedTopAndBottom = " ======= ";
+		int expectedRowLength = expectedTopAndBottom.length();
+		for (String row : rowsToDraw) {
+			assertEquals(expectedRowLength, row.length());
+		}
+
+		String topOfDie = rowsToDraw.get(0);
+		String bottomOfDie = rowsToDraw.get(expectedNumberOfRows - 1);
+
+		assertEquals(expectedTopAndBottom, topOfDie);
+		assertEquals(expectedTopAndBottom, bottomOfDie);
+
+		char expectedSide = '|';
+		for (int rowIndex = 1; rowIndex < expectedNumberOfRows - 1; rowIndex++) {
+			assertEquals(expectedSide, rowsToDraw.get(rowIndex).charAt(0));
+			assertEquals(expectedSide,
+					rowsToDraw.get(rowIndex).charAt(expectedRowLength - 1));
+		}
+	}
+
+}
