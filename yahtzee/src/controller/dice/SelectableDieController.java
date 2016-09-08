@@ -1,8 +1,6 @@
 package controller.dice;
 
 import model.dice.DieModel;
-import view.dice.SimpleDieFactoryInterface;
-import view.dice.SimpleDieViewFactory;
 
 public class SelectableDieController {
 

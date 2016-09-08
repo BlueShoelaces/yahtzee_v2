@@ -1,6 +1,5 @@
 package view.dice;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import narrTest.NarrTestCase;
@@ -16,8 +15,10 @@ public class SelectableDieViewTest extends NarrTestCase {
 				expectedDieView);
 
 		assertSame(expectedDieView, selectableDieView.getDieFaceView());
-		ArrayList selectableDieRowsToDraw = assertIsOfTypeAndGet(
-				ArrayList.class, selectableDieView.getRowsToDraw());
+
+		assertNotNull(selectableDieView.getRowsToDraw());
+		List<String> selectableDieRowsToDraw = selectableDieView
+				.getRowsToDraw();
 
 		List<String> dieRowsToDraw = expectedDieView.getRowsToDraw();
 		assertNotSame(dieRowsToDraw, selectableDieRowsToDraw);

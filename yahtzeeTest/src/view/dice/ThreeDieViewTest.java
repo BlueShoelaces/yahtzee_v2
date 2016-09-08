@@ -1,6 +1,6 @@
 package view.dice;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import narrTest.NarrTestCase;
 
@@ -12,8 +12,8 @@ public class ThreeDieViewTest extends NarrTestCase {
 
 	public void testLooksLikeThree() throws Exception {
 		ThreeDieView threeDieView = new ThreeDieView();
-		ArrayList<String> rowsToDraw = assertIsOfTypeAndGet(ArrayList.class,
-				threeDieView.getRowsToDraw());
+		List<String> rowsToDraw = threeDieView.getRowsToDraw();
+		assertNotNull(rowsToDraw);
 		assertEquals(5, rowsToDraw.size());
 
 		assertEquals("| •     |", rowsToDraw.get(1));

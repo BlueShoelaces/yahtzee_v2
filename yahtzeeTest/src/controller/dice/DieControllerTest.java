@@ -1,14 +1,13 @@
 package controller.dice;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import model.dice.DieModel;
 import model.dice.DieModelInterface;
 import model.dice.MockDieModel;
 import narrTest.NarrTestCase;
 import narrTest.SingletonTestHelper;
+
+import org.junit.Test;
+
 import view.dice.DieFaceView;
 import view.dice.MockSimpleDieFactory;
 
@@ -38,11 +37,12 @@ public class DieControllerTest extends NarrTestCase {
 		DieController dieController = new DieController(originalMockDieModel);
 
 		dieController.roll();
-		DieModelInterface updatedDieModel = assertIsOfTypeAndGet(DieModel.class, dieController.getDieModel());
-		
+		DieModelInterface updatedDieModel = assertIsOfTypeAndGet(
+				DieModel.class, dieController.getDieModel());
+
 		boolean valueIsAlwaysBetweenOneAndSix = true;
 		boolean[] possibleValues = new boolean[6];
-		
+
 		for (int i = 0; i < 100; i++) {
 			dieController.roll();
 			updatedDieModel = dieController.getDieModel();
@@ -53,9 +53,11 @@ public class DieControllerTest extends NarrTestCase {
 			}
 			possibleValues[updatedValue - 1] = true;
 		}
-		
-		assertTrue("Value " + updatedDieModel.getValue() + " was less than 1 or greater than 6.", valueIsAlwaysBetweenOneAndSix);
-		
+
+		assertTrue("Value " + updatedDieModel.getValue()
+				+ " was less than 1 or greater than 6.",
+				valueIsAlwaysBetweenOneAndSix);
+
 		for (int i = 0; i < possibleValues.length; i++) {
 			assertTrue("Never got a " + (i + 1), possibleValues[i]);
 		}

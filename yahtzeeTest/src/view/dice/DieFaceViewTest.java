@@ -16,8 +16,8 @@ public class DieFaceViewTest extends NarrTestCase {
 	}
 
 	private void checkDieShape(DieFaceView oneDieView) {
-		List<String> rowsToDraw = assertIsOfTypeAndGet(List.class,
-				oneDieView.getRowsToDraw());
+		List<String> rowsToDraw = oneDieView.getRowsToDraw();
+		assertNotNull(rowsToDraw);
 		int expectedNumberOfRows = 5;
 		assertEquals(expectedNumberOfRows, rowsToDraw.size());
 

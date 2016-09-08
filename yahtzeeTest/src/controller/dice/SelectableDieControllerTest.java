@@ -3,8 +3,6 @@ package controller.dice;
 import model.dice.DieModel;
 import model.dice.DieModelInterface;
 import narrTest.NarrTestCase;
-import view.dice.SimpleDieFactoryInterface;
-import view.dice.SimpleDieViewFactory;
 
 public class SelectableDieControllerTest extends NarrTestCase {
 

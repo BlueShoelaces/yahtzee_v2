@@ -3,13 +3,12 @@ package controller.dice;
 import model.dice.DieModel;
 import model.dice.DieModelInterface;
 import view.dice.DieFaceView;
-import view.dice.SimpleDieFactoryInterface;
 import view.dice.SimpleDieViewFactory;
 
 public class DieController {
 
 	private DieModelInterface dieModel;
-	private DieFaceView dieView;
+	private final DieFaceView dieView;
 
 	public DieController(DieModelInterface dieModel) {
 		this.dieModel = dieModel;
@@ -19,9 +18,9 @@ public class DieController {
 	private DieFaceView generateDieViewFromModel(DieModelInterface dieModel) {
 		return SimpleDieViewFactory.instance().buildDie(dieModel.getValue());
 	}
-	
+
 	public void roll() {
-		this.dieModel = new DieModel((int)(Math.random() * 6) + 1);
+		this.dieModel = new DieModel((int) (Math.random() * 6) + 1);
 	}
 
 	public DieModelInterface getDieModel() {
