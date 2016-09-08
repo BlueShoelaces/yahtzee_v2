@@ -64,7 +64,7 @@ public class DieControllerTest extends NarrTestCase {
 	}
 
 	@Test
-	public void deleteMe() throws Exception {
-		assertFail("Delete me!!!");
+	public void testDeleteMe() throws Exception {
+		assertFail("Delete me ;(");
 	}
 }
