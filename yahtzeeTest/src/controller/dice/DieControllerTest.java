@@ -13,13 +13,25 @@ import view.dice.MockSimpleDieFactory;
 
 public class DieControllerTest extends NarrTestCase {
 
+	private MockSimpleDieFactory mockSimpleDieFactory;
+
+	@Override
+	protected void setUp() throws Exception {
+		this.mockSimpleDieFactory = SingletonTestHelper.useMockDieFactory();
+		super.setUp();
+	}
+
+	@Override
+	protected void tearDown() throws Exception {
+		SingletonTestHelper.resetDieFactory();
+		super.tearDown();
+	}
+
 	public void testConstructor() throws Exception {
 
 		MockDieModel mockDieModel = new MockDieModel();
 		int expectedValue = 37;
 		mockDieModel.setValue(expectedValue);
-		MockSimpleDieFactory mockSimpleDieFactory = SingletonTestHelper
-				.useMockDieFactory();
 		DieController dieController = new DieController(mockDieModel);
 
 		assertSame(mockDieModel, dieController.getDieModel());
@@ -27,7 +39,7 @@ public class DieControllerTest extends NarrTestCase {
 		assertIsOfTypeAndGet(DieFaceView.class, dieController.getDieView());
 
 		assertEquals(expectedValue,
-				mockSimpleDieFactory.getValuePassedToBuild());
+				this.mockSimpleDieFactory.getValuePassedToBuild());
 	}
 
 	@Test
