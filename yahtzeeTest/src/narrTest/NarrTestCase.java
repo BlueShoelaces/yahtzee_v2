@@ -17,5 +17,13 @@ public class NarrTestCase extends TestCase {
 			Class<? extends Object> actualClass) {
 		assertSame(expectedSuperClass, actualClass.getSuperclass());
 	}
-	
+
+	protected static void assertFail() {
+		assertTrue(false);
+	}
+
+	protected static void assertFail(String message) {
+		assertTrue(message, false);
+	}
+
 }
