@@ -18,6 +18,20 @@ public class NarrTestCase extends TestCase {
 		assertSame(expectedSuperClass, actualClass.getSuperclass());
 	}
 
+	protected static void assertImplementsInterface(
+			Class<? extends Object> expectedInterface,
+			Class<? extends Object> actualClass) {
+		Class<?>[] interfaces = actualClass.getInterfaces();
+		boolean implementsInterface = false;
+		for (Class<?> actualInterface : interfaces) {
+			if (expectedInterface.equals(actualInterface)) {
+				implementsInterface = true;
+			}
+		}
+		assertTrue("" + actualClass + " does not implement "
+				+ expectedInterface, implementsInterface);
+	}
+
 	protected static void assertFail() {
 		assertTrue(false);
 	}

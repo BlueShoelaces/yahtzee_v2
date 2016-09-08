@@ -27,6 +27,7 @@ public class SelectableDieController {
 
 	public void toggleSelected() {
 		this.selected = !this.selected;
+		this.selectableDieView.setLocked(this.selected);
 	}
 
 	public boolean isSelected() {

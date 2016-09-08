@@ -53,13 +53,19 @@ public class SelectableDieControllerTest extends NarrTestCase {
 	@Test
 	public void testToggleSelected() throws Exception {
 		SelectableDieController selectableDieController = new SelectableDieController();
+		SelectableDieView dieView = assertIsOfTypeAndGet(
+				SelectableDieView.class,
+				selectableDieController.getSelectableDieView());
 
 		assertFalse(selectableDieController.isSelected());
+		assertFalse(dieView.isLocked());
 
 		selectableDieController.toggleSelected();
 		assertTrue(selectableDieController.isSelected());
+		assertTrue(dieView.isLocked());
 
 		selectableDieController.toggleSelected();
 		assertFalse(selectableDieController.isSelected());
+		assertFalse(dieView.isLocked());
 	}
 }
