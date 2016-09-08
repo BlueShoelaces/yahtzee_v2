@@ -8,19 +8,21 @@ import view.dice.SimpleDieViewFactory;
 public class DieController {
 
 	private DieModelInterface dieModel;
-	private final DieFaceView dieView;
+	private DieFaceView dieView;
 
 	public DieController(DieModelInterface dieModel) {
 		this.dieModel = dieModel;
-		this.dieView = generateDieViewFromModel(dieModel);
+		setDieViewFromModel(dieModel);
 	}
 
-	private DieFaceView generateDieViewFromModel(DieModelInterface dieModel) {
-		return SimpleDieViewFactory.instance().buildDie(dieModel.getValue());
+	private void setDieViewFromModel(DieModelInterface dieModel) {
+		this.dieView = SimpleDieViewFactory.instance().buildDie(
+				dieModel.getValue());
 	}
 
 	public void roll() {
 		this.dieModel = new DieModel((int) (Math.random() * 6) + 1);
+		setDieViewFromModel(this.dieModel);
 	}
 
 	public DieModelInterface getDieModel() {

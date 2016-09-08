@@ -68,4 +68,9 @@ public class SelectableDieControllerTest extends NarrTestCase {
 		assertFalse(selectableDieController.isSelected());
 		assertFalse(dieView.isLocked());
 	}
+
+	@Test
+	public void testDoThis() throws Exception {
+		assertFail("Make SelectableDieController listen for its Controller's View to update...");
+	}
 }

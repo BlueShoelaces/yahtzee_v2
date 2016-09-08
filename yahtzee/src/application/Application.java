@@ -22,8 +22,9 @@ public class Application implements ApplicationInterface {
 	@Override
 	public void run() {
 		ArrayList<SelectableDieController> dice = new ArrayList<SelectableDieController>();
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 3; i++) {
 			dice.add(new SelectableDieController());
+			dice.get(i).getDieController().roll();
 		}
 
 		SelectableDieController secondDie = dice.get(1);

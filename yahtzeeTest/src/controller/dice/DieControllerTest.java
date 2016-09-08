@@ -9,7 +9,13 @@ import narrTest.SingletonTestHelper;
 import org.junit.Test;
 
 import view.dice.DieFaceView;
+import view.dice.FiveDieView;
+import view.dice.FourDieView;
 import view.dice.MockSimpleDieFactory;
+import view.dice.OneDieView;
+import view.dice.SixDieView;
+import view.dice.ThreeDieView;
+import view.dice.TwoDieView;
 
 public class DieControllerTest extends NarrTestCase {
 
@@ -72,6 +78,54 @@ public class DieControllerTest extends NarrTestCase {
 
 		for (int i = 0; i < possibleValues.length; i++) {
 			assertTrue("Never got a " + (i + 1), possibleValues[i]);
+		}
+	}
+
+	@Test
+	public void testRoll_CreatesNewDieView() throws Exception {
+		SingletonTestHelper.resetDieFactory();
+		DieController dieController = new DieController(new MockDieModel());
+
+		for (int i = 0; i < 100; i++) {
+			dieController.roll();
+
+			DieModel updatedDieModel = assertIsOfTypeAndGet(DieModel.class,
+					dieController.getDieModel());
+			int value = updatedDieModel.getValue();
+
+			DieFaceView updatedDieView = assertIsOfTypeAndGet(
+					DieFaceView.class, dieController.getDieView());
+
+			checkDieViewForValue(value, updatedDieView);
+		}
+
+	}
+
+	private void checkDieViewForValue(int value, DieFaceView updatedDieView) {
+		String message = "Value was " + value + " but die view was "
+				+ updatedDieView.getClass();
+
+		switch (value) {
+		case 1:
+			assertTrue(message, updatedDieView instanceof OneDieView);
+			break;
+		case 2:
+			assertTrue(message, updatedDieView instanceof TwoDieView);
+			break;
+		case 3:
+			assertTrue(message, updatedDieView instanceof ThreeDieView);
+			break;
+		case 4:
+			assertTrue(message, updatedDieView instanceof FourDieView);
+			break;
+		case 5:
+			assertTrue(message, updatedDieView instanceof FiveDieView);
+			break;
+		case 6:
+			assertTrue(message, updatedDieView instanceof SixDieView);
+			break;
+		default:
+			assertFail("Value " + value + " was less than 1 or greater than 6.");
 		}
 	}
 }
