@@ -1,6 +1,12 @@
 package view.dice;
 
 public class SimpleDieViewFactory implements SimpleDieFactoryInterface {
+	
+	private static SimpleDieFactoryInterface singleton;
+	
+	private SimpleDieViewFactory() {
+		
+	}
 
 	@Override
 	public DieFaceView buildDie(int value) {
@@ -20,6 +26,13 @@ public class SimpleDieViewFactory implements SimpleDieFactoryInterface {
 		default:
 			return new NullDieView();
 		}
+	}
+
+	public static SimpleDieFactoryInterface instance() {
+		if (singleton == null) {
+			singleton = new SimpleDieViewFactory();
+		}
+		return singleton;
 	}
 
 }

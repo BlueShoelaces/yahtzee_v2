@@ -17,4 +17,5 @@ public class NarrTestCase extends TestCase {
 			Class<? extends Object> actualClass) {
 		assertSame(expectedSuperClass, actualClass.getSuperclass());
 	}
+	
 }

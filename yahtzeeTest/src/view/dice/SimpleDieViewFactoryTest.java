@@ -1,11 +1,24 @@
 package view.dice;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 import narrTest.NarrTestCase;
 
 public class SimpleDieViewFactoryTest extends NarrTestCase {
+	
+	@Test
+	public void testIsASingleton() throws Exception {
+		SimpleDieFactoryInterface firstInstance = SimpleDieViewFactory.instance();
+		assertNotNull(firstInstance);
+		
+		SimpleDieFactoryInterface secondInstance = SimpleDieViewFactory.instance();
+		assertSame(firstInstance, secondInstance);
+	}
 
 	public void testBuildDie_ReturnsDieAccordingToValue() throws Exception {
-		SimpleDieFactoryInterface simpleDieFactory = new SimpleDieViewFactory();
+		SimpleDieFactoryInterface simpleDieFactory = SimpleDieViewFactory.instance();
 		assertIsOfTypeAndGet(OneDieView.class, simpleDieFactory.buildDie(1));
 		assertIsOfTypeAndGet(TwoDieView.class, simpleDieFactory.buildDie(2));
 		assertIsOfTypeAndGet(ThreeDieView.class, simpleDieFactory.buildDie(3));

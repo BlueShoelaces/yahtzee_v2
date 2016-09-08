@@ -1,7 +1,14 @@
 package controller.dice;
 
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import model.dice.DieModel;
+import model.dice.DieModelInterface;
 import model.dice.MockDieModel;
 import narrTest.NarrTestCase;
+import narrTest.SingletonTestHelper;
 import view.dice.DieFaceView;
 import view.dice.MockSimpleDieFactory;
 
@@ -12,9 +19,9 @@ public class DieControllerTest extends NarrTestCase {
 		MockDieModel mockDieModel = new MockDieModel();
 		int expectedValue = 37;
 		mockDieModel.setValue(expectedValue);
-		MockSimpleDieFactory mockSimpleDieFactory = new MockSimpleDieFactory();
-		DieController dieController = new DieController(mockDieModel,
-				mockSimpleDieFactory);
+		MockSimpleDieFactory mockSimpleDieFactory = SingletonTestHelper
+				.useMockDieFactory();
+		DieController dieController = new DieController(mockDieModel);
 
 		assertSame(mockDieModel, dieController.getDieModel());
 
@@ -22,7 +29,35 @@ public class DieControllerTest extends NarrTestCase {
 
 		assertEquals(expectedValue,
 				mockSimpleDieFactory.getValuePassedToBuild());
+	}
 
-		assertSame(mockSimpleDieFactory, dieController.getSimpleDieFactory());
+	@Test
+	public void testRoll_UpdatesDieModelWithRandomValue() throws Exception {
+		MockDieModel originalMockDieModel = new MockDieModel();
+		originalMockDieModel.setValue(27);
+		DieController dieController = new DieController(originalMockDieModel);
+
+		dieController.roll();
+		DieModelInterface updatedDieModel = assertIsOfTypeAndGet(DieModel.class, dieController.getDieModel());
+		
+		boolean valueIsAlwaysBetweenOneAndSix = true;
+		boolean[] possibleValues = new boolean[6];
+		
+		for (int i = 0; i < 100; i++) {
+			dieController.roll();
+			updatedDieModel = dieController.getDieModel();
+			int updatedValue = updatedDieModel.getValue();
+			if (updatedValue < 1 || updatedValue > 6) {
+				valueIsAlwaysBetweenOneAndSix = false;
+				break;
+			}
+			possibleValues[updatedValue - 1] = true;
+		}
+		
+		assertTrue("Value " + updatedDieModel.getValue() + " was less than 1 or greater than 6.", valueIsAlwaysBetweenOneAndSix);
+		
+		for (int i = 0; i < possibleValues.length; i++) {
+			assertTrue("Never got a " + (i + 1), possibleValues[i]);
+		}
 	}
 }

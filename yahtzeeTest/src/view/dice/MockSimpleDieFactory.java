@@ -7,10 +7,11 @@ public class MockSimpleDieFactory implements SimpleDieFactoryInterface {
 	@Override
 	public DieFaceView buildDie(int value) {
 		this.valuePassedToBuild = value;
-		return new NullDieView();
+		return new MockDieView();
 	}
 
 	public int getValuePassedToBuild() {
 		return valuePassedToBuild;
 	}
+
 }
