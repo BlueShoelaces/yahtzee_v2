@@ -62,9 +62,4 @@ public class DieControllerTest extends NarrTestCase {
 			assertTrue("Never got a " + (i + 1), possibleValues[i]);
 		}
 	}
-
-	@Test
-	public void testDeleteMe() throws Exception {
-		assertFail("Delete me ;(");
-	}
 }
