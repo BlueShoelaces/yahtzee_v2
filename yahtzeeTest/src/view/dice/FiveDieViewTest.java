@@ -16,8 +16,10 @@ public class FiveDieViewTest extends NarrTestCase {
 		assertNotNull(rowsToDraw);
 		assertEquals(5, rowsToDraw.size());
 
-		assertEquals("| •   • |", rowsToDraw.get(1));
-		assertEquals("|   •   |", rowsToDraw.get(2));
-		assertEquals("| •   • |", rowsToDraw.get(3));
+		assertEquals("| " + DieFaceViewTest.DIE_POINT_CHARACTER + "   "
+				+ DieFaceViewTest.DIE_POINT_CHARACTER + " |", rowsToDraw.get(1));
+		assertEquals("|   " + DieFaceViewTest.DIE_POINT_CHARACTER + "   |", rowsToDraw.get(2));
+		assertEquals("| " + DieFaceViewTest.DIE_POINT_CHARACTER + "   "
+				+ DieFaceViewTest.DIE_POINT_CHARACTER + " |", rowsToDraw.get(3));
 	}
 }

@@ -6,6 +6,8 @@ import narrTest.NarrTestCase;
 
 public class DieFaceViewTest extends NarrTestCase {
 
+	public static final char DIE_POINT_CHARACTER = (char) 0x2022;
+
 	public void testDieShape() throws Exception {
 		DieFaceView oneDieView = new OneDieView();
 		checkDieShape(oneDieView);
@@ -36,8 +38,7 @@ public class DieFaceViewTest extends NarrTestCase {
 		char expectedSide = '|';
 		for (int rowIndex = 1; rowIndex < expectedNumberOfRows - 1; rowIndex++) {
 			assertEquals(expectedSide, rowsToDraw.get(rowIndex).charAt(0));
-			assertEquals(expectedSide,
-					rowsToDraw.get(rowIndex).charAt(expectedRowLength - 1));
+			assertEquals(expectedSide, rowsToDraw.get(rowIndex).charAt(expectedRowLength - 1));
 		}
 	}
 

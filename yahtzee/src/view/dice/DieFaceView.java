@@ -5,6 +5,7 @@ import java.util.List;
 
 public abstract class DieFaceView {
 
+	protected final char DIE_POINT_CHARACTER = (char) 0x2022;
 	protected List<String> rowsToDraw;
 
 	public DieFaceView() {

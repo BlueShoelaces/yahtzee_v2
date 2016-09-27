@@ -17,7 +17,7 @@ public class OneDieViewTest extends NarrTestCase {
 		assertEquals(5, rowsToDraw.size());
 
 		assertEquals("|       |", rowsToDraw.get(1));
-		assertEquals("|   •   |", rowsToDraw.get(2));
+		assertEquals("|   " + DieFaceViewTest.DIE_POINT_CHARACTER + "   |", rowsToDraw.get(2));
 		assertEquals("|       |", rowsToDraw.get(3));
 	}
 
