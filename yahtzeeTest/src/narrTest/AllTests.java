@@ -12,6 +12,7 @@ public class AllTests extends NarrTestCase {
 		suite.addTest(model.dice.Suite.suite());
 		suite.addTest(view.dice.Suite.suite());
 		suite.addTest(controller.dice.Suite.suite());
+		suite.addTest(ui.Suite.suite());
 
 		return suite;
 	}
