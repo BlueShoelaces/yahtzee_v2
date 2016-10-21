@@ -1,5 +1,7 @@
 package view.dice;
 
+import view.Drawable;
+
 public class SimpleDieViewFactory implements SimpleDieFactoryInterface {
 	
 	private static SimpleDieFactoryInterface singleton;
@@ -9,7 +11,7 @@ public class SimpleDieViewFactory implements SimpleDieFactoryInterface {
 	}
 
 	@Override
-	public DieFaceView buildDie(int value) {
+	public Drawable buildDie(int value) {
 		switch (value) {
 		case 1:
 			return new OneDieView();

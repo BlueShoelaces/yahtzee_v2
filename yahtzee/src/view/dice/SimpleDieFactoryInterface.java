@@ -1,7 +1,9 @@
 package view.dice;
 
+import view.Drawable;
+
 public interface SimpleDieFactoryInterface {
 
-	public abstract DieFaceView buildDie(int value);
+	public abstract Drawable buildDie(int value);
 
 }

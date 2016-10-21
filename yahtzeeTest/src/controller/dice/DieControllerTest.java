@@ -8,6 +8,7 @@ import narrTest.SingletonTestHelper;
 
 import org.junit.Test;
 
+import view.Drawable;
 import view.dice.DieFaceView;
 import view.dice.FiveDieView;
 import view.dice.FourDieView;
@@ -93,7 +94,7 @@ public class DieControllerTest extends NarrTestCase {
 					dieController.getDieModel());
 			int value = updatedDieModel.getValue();
 
-			DieFaceView updatedDieView = assertIsOfTypeAndGet(
+			Drawable updatedDieView = assertIsOfTypeAndGet(
 					DieFaceView.class, dieController.getDieView());
 
 			checkDieViewForValue(value, updatedDieView);
@@ -101,7 +102,7 @@ public class DieControllerTest extends NarrTestCase {
 
 	}
 
-	private void checkDieViewForValue(int value, DieFaceView updatedDieView) {
+	private void checkDieViewForValue(int value, Drawable updatedDieView) {
 		String message = "Value was " + value + " but die view was "
 				+ updatedDieView.getClass();
 

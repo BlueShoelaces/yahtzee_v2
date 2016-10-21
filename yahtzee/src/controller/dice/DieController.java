@@ -2,13 +2,13 @@ package controller.dice;
 
 import model.dice.DieModel;
 import model.dice.DieModelInterface;
-import view.dice.DieFaceView;
+import view.Drawable;
 import view.dice.SimpleDieViewFactory;
 
 public class DieController {
 
 	private DieModelInterface dieModel;
-	private DieFaceView dieView;
+	private Drawable dieView;
 
 	public DieController(DieModelInterface dieModel) {
 		this.dieModel = dieModel;
@@ -29,7 +29,7 @@ public class DieController {
 		return this.dieModel;
 	}
 
-	public DieFaceView getDieView() {
+	public Drawable getDieView() {
 		return this.dieView;
 	}
 

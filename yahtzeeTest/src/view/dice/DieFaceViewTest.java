@@ -3,13 +3,14 @@ package view.dice;
 import java.util.List;
 
 import narrTest.NarrTestCase;
+import view.Drawable;
 
 public class DieFaceViewTest extends NarrTestCase {
 
 	public static final char DIE_POINT_CHARACTER = (char) 0x2022;
 
 	public void testDieShape() throws Exception {
-		DieFaceView oneDieView = new OneDieView();
+		Drawable oneDieView = new OneDieView();
 		checkDieShape(oneDieView);
 
 		TwoDieView twoDieView = new TwoDieView();
@@ -17,7 +18,7 @@ public class DieFaceViewTest extends NarrTestCase {
 
 	}
 
-	private void checkDieShape(DieFaceView oneDieView) {
+	private void checkDieShape(Drawable oneDieView) {
 		List<String> rowsToDraw = oneDieView.getRowsToDraw();
 		assertNotNull(rowsToDraw);
 		int expectedNumberOfRows = 5;

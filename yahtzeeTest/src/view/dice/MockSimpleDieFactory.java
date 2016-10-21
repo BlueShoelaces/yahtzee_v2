@@ -1,11 +1,13 @@
 package view.dice;
 
+import view.Drawable;
+
 public class MockSimpleDieFactory implements SimpleDieFactoryInterface {
 
 	private int valuePassedToBuild;
 
 	@Override
-	public DieFaceView buildDie(int value) {
+	public Drawable buildDie(int value) {
 		this.valuePassedToBuild = value;
 		return new MockDieView();
 	}

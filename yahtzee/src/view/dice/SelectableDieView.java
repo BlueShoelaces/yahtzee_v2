@@ -3,15 +3,17 @@ package view.dice;
 import java.util.ArrayList;
 import java.util.List;
 
+import view.Drawable;
+
 public class SelectableDieView {
 
 	private static final String UNSELECTED_BOX_STRING = "   [ ]   ";
 	private static final String SELECTED_BOX_STRING = "   [X]   ";
 	private final List<String> rowsToDraw;
-	private final DieFaceView dieFaceView;
+	private final Drawable dieFaceView;
 	private boolean locked;
 
-	public SelectableDieView(DieFaceView dieFaceView) {
+	public SelectableDieView(Drawable dieFaceView) {
 		this.dieFaceView = dieFaceView;
 		this.rowsToDraw = new ArrayList<String>();
 		this.rowsToDraw.addAll(dieFaceView.getRowsToDraw());
@@ -23,7 +25,7 @@ public class SelectableDieView {
 		return this.rowsToDraw;
 	}
 
-	public DieFaceView getDieFaceView() {
+	public Drawable getDieFaceView() {
 		return this.dieFaceView;
 	}
 
