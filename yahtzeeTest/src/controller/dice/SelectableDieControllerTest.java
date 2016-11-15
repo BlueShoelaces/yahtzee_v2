@@ -10,6 +10,7 @@ import org.junit.Test;
 import view.dice.DieFaceView;
 import view.dice.MockSimpleDieFactory;
 import view.dice.SelectableDieView;
+import view.dice.SelectableDieViewInterface;
 
 public class SelectableDieControllerTest extends NarrTestCase {
 
@@ -38,7 +39,7 @@ public class SelectableDieControllerTest extends NarrTestCase {
 		assertIsOfTypeAndGet(DieModel.class, dieModel);
 		assertEquals(6, dieModel.getValue());
 
-		SelectableDieView selectableDieView = assertIsOfTypeAndGet(
+		SelectableDieViewInterface selectableDieView = assertIsOfTypeAndGet(
 				SelectableDieView.class,
 				selectableDieController.getSelectableDieView());
 		assertIsOfTypeAndGet(DieFaceView.class,
@@ -53,7 +54,7 @@ public class SelectableDieControllerTest extends NarrTestCase {
 	@Test
 	public void testToggleSelected() throws Exception {
 		SelectableDieController selectableDieController = new SelectableDieController();
-		SelectableDieView dieView = assertIsOfTypeAndGet(
+		SelectableDieViewInterface dieView = assertIsOfTypeAndGet(
 				SelectableDieView.class,
 				selectableDieController.getSelectableDieView());
 

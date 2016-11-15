@@ -2,12 +2,19 @@ package view.dice;
 
 import java.util.List;
 
+import org.junit.Test;
+
 import narrTest.NarrTestCase;
 import view.Drawable;
 
 public class DieFaceViewTest extends NarrTestCase {
 
 	public static final char DIE_POINT_CHARACTER = (char) 0x2022;
+
+	@Test
+	public void testExtendsDrawable() throws Exception {
+		assertExtends(Drawable.class, DieFaceView.class);
+	}
 
 	public void testDieShape() throws Exception {
 		Drawable oneDieView = new OneDieView();

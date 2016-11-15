@@ -2,6 +2,7 @@ package controller.dice;
 
 import model.dice.DieModel;
 import view.dice.SelectableDieView;
+import view.dice.SelectableDieViewInterface;
 import view.dice.SimpleDieViewFactory;
 
 public class SelectableDieController {
@@ -9,7 +10,7 @@ public class SelectableDieController {
 	private static final int DEFAULT_VALUE = 6;
 	private final DieController dieController;
 	private boolean selected;
-	private final SelectableDieView selectableDieView;
+	private final SelectableDieViewInterface selectableDieView;
 
 	public SelectableDieController() {
 		this.dieController = new DieController(new DieModel(DEFAULT_VALUE));
@@ -21,7 +22,7 @@ public class SelectableDieController {
 		return this.dieController;
 	}
 
-	public SelectableDieView getSelectableDieView() {
+	public SelectableDieViewInterface getSelectableDieView() {
 		return this.selectableDieView;
 	}
 

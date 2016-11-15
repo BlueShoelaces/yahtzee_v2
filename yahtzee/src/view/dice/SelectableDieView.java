@@ -5,11 +5,10 @@ import java.util.List;
 
 import view.Drawable;
 
-public class SelectableDieView {
+public class SelectableDieView extends Drawable implements SelectableDieViewInterface {
 
 	private static final String UNSELECTED_BOX_STRING = "   [ ]   ";
 	private static final String SELECTED_BOX_STRING = "   [X]   ";
-	private final List<String> rowsToDraw;
 	private final Drawable dieFaceView;
 	private boolean locked;
 
@@ -21,18 +20,22 @@ public class SelectableDieView {
 		this.rowsToDraw.add(UNSELECTED_BOX_STRING);
 	}
 
+	@Override
 	public List<String> getRowsToDraw() {
 		return this.rowsToDraw;
 	}
 
+	@Override
 	public Drawable getDieFaceView() {
 		return this.dieFaceView;
 	}
 
+	@Override
 	public boolean isLocked() {
 		return this.locked;
 	}
 
+	@Override
 	public void setLocked(boolean isLocked) {
 		this.locked = isLocked;
 		int checkboxRowIndex = this.rowsToDraw.size() - 1;
@@ -43,6 +46,7 @@ public class SelectableDieView {
 		}
 	}
 
+	@Override
 	public void draw() {
 		for (String row : this.rowsToDraw) {
 			System.out.println(row);
